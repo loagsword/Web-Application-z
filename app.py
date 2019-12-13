@@ -36,5 +36,10 @@ def add():
     db.session.commit()
     return json.dumps("Added"), 200
 
+@app.route('/remove/<cat_id', methods=['DELETE'])
+def remove(cat_id):
+    Cats.query.filter_by(id=cat_id).delete()
+    db.session.commit()
+    return json.dumps("Deleted"), 200
 
 
