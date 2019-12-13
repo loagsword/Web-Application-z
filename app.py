@@ -31,7 +31,7 @@ def add():
     price = data['price']
     breed = data['breed']
 
-    cat = Cats(name=name, price-price, breed=breed)
+    cat = Cats(name=name, price=price, breed=breed)
     db.session.add(cat)
     db.session.commit()
     return json.dumps("Added"), 200
