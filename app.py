@@ -42,4 +42,12 @@ def remove(cat_id):
     db.session.commit()
     return json.dumps("Deleted"), 200
 
+@app.route('/edit/<cat_id>', methods=['PATCH'])
+def edit(cat_id):
+    data = request.get_json()
+    new_price = data['price']
+    cat_to_update = Cats.query.filter_by(id=cat_id).all()[0]
+    cat_to_update.price = new_price
+    db.session.commit()
+    return json.dumps("Edited"), 200
 
