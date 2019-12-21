@@ -16,6 +16,8 @@ marshmallow = "*"
 flask-bcrypt = "*"
 pyjwt = "*"
 psycopg2-binary = "*"
+pytest-cov = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"
