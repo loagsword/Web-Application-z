@@ -13,6 +13,7 @@ def create():
   """
   Create Blogpost Function
   """
+  # app initialization
   req_data = request.get_json()
   req_data['owner_id'] = g.user.get('id')
   data, error = blogpost_schema.load(req_data)
@@ -24,6 +25,17 @@ def create():
   return custom_response(data, 201)
 
 
+@blogpost_api.route('/', methods=['GET'])
+def get_all():
+  """
+  Get All Blogposts
+  """
+  posts = BlogpostModel.get_all_blogposts()
+  data = blogpost_schema.dump(posts, many=True).data
+  return custom_response(data, 200)
+
+
+# app initialization
 def custom_response(res, status_code):
   """
   Custom Response Function
