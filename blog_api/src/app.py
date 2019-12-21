@@ -11,7 +11,7 @@ def create_app(env_name):
     Create app
     """
 
-    # app initiliazation
+    # app initialization
     app = Flask(__name__)
 
     app.config.from_object(app_config[env_name])
@@ -26,6 +26,6 @@ def create_app(env_name):
         """
         example endpoint
         """
-        return 'Congratulations! Your first endpoint is workin'
+        return 'Congratulations! Your first endpoint is working'
 
     return app

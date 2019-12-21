@@ -37,7 +37,7 @@ class BlogpostModel(db.Model):
 
     def delete(self):
         db.session.delete(self)
-        de.session.commit()
+        db.session.commit()
 
     @staticmethod
     def get_all_blogposts():
@@ -49,6 +49,7 @@ class BlogpostModel(db.Model):
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
+
 
 class BlogpostSchema(Schema):
     """

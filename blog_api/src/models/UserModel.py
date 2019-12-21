@@ -3,7 +3,7 @@ from marshmallow import fields, Schema
 import datetime
 from . import db
 from ..app import bcrypt
-from .BlogpostModel import BlogpostModel
+from .BlogpostModel import BlogpostSchema
 
 
 class UserModel(db.Model):
@@ -13,7 +13,6 @@ class UserModel(db.Model):
 
     # table name
     __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)
