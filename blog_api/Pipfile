@@ -18,6 +18,7 @@ pyjwt = "*"
 psycopg2-binary = "*"
 pytest-cov = "*"
 pytest = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
