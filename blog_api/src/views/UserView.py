@@ -34,6 +34,15 @@ def create():
 
     return custom_response({'jwt_token': token}, 201)
 
+
+@user_api.route('/', methods=['GET'])
+@Auth.auth_required
+def get_all():
+  users = UserModel.get_all_users()
+  ser_users = user_schema.dump(users, many=True).data
+  return custom_response(ser_users, 200)
+
+
 @user_api.route('/login', methods=['POST'])
 def login():
     req_data = request.get_json()
@@ -59,18 +68,6 @@ def login():
     token = Auth.generate_token(ser_data.get('id'))
 
     return custom_response({'jwt_token': token}, 200)
-
-
-@user_api.route('/', methods=['GET'])
-@Auth.auth_required
-def get_all():
-  users = UserModel.get_all_users()
-  ser_users = user_schema.dump(users, many=True).data
-  return custom_response(ser_users, 200)
-
-
-@user_api.route('/login', methods=['POST'])
-def login():
 
 
 def custom_response(res, status_code):
