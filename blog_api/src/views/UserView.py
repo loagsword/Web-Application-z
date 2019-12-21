@@ -1,6 +1,6 @@
 # /src/views/UserView
 
-from flask import request, json, Response, Blueprint
+from flask import request, json, Response, Blueprint, g
 from ..models.UserModel import UserModel, UserSchema
 from ..shared.Authentication import Auth
 
@@ -27,11 +27,8 @@ def create():
 
     user = UserModel(data)
     user.save()
-
     ser_data = user_schema.dump(user).data
-
     token = Auth.generate_token(ser_data.get('id'))
-
     return custom_response({'jwt_token': token}, 201)
 
 
