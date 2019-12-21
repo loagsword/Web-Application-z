@@ -4,6 +4,6 @@ env/
 .idea
 db.sqlite3
 *.pyc
-blog_api/.coverage
+.coverage
 .coveralls.yml
 .pytest_cache
