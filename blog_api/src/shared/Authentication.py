@@ -38,8 +38,8 @@ class Auth():
     @staticmethod
     def decode_token(token):
         """
-    Decode token method
-    """
+        Decode token method
+        """
         re = {'data': {}, 'error': {}}
         try:
             payload = jwt.decode(token, os.getenv('JWT_SECRET_KEY'))
@@ -56,8 +56,8 @@ class Auth():
     @staticmethod
     def auth_required(func):
         """
-    Auth decorator
-    """
+        Auth decorator
+        """
 
         @wraps(func)
         def decorated_auth(*args, **kwargs):
