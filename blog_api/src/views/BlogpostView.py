@@ -48,18 +48,6 @@ def get_one(blogpost_id):
     return custom_response(data, 200)
 
 
-# app initialization
-def custom_response(res, status_code):
-    """
-    Custom Response Function
-    """
-    return Response(
-        mimetype="application/json",
-        response=json.dumps(res),
-        status=status_code
-    )
-
-
 @blogpost_api.route('/<int:blogpost_id>', methods=['PUT'])
 @Auth.auth_required
 def update(blogpost_id):
@@ -98,3 +86,15 @@ def delete(blogpost_id):
 
     post.delete()
     return custom_response({'message': 'deleted'}, 204)
+
+
+# app initialization
+def custom_response(res, status_code):
+    """
+    Custom Response Function
+    """
+    return Response(
+        mimetype="application/json",
+        response=json.dumps(res),
+        status=status_code
+    )
