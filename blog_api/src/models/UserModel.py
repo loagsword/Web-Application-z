@@ -47,12 +47,6 @@ class UserModel(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def __generate_hash(self, password):
-        return bcrypt.generate_password_hash(password, rounds=10).decode("utf-8")
-
-    def check_hash(self, password):
-        return bcrypt.check_password_hash(self.password, password)
-
     @staticmethod
     def get_all_users():
         return UserModel.query.all()
@@ -67,6 +61,12 @@ class UserModel(db.Model):
 
     def __repr(self):
         return '<id {}>'.format(self.id)
+
+    def __generate_hash(self, password):
+        return bcrypt.generate_password_hash(password, rounds=10).decode("utf-8")
+
+    def check_hash(self, password):
+        return bcrypt.check_password_hash(self.password, password)
 
 
 class UserSchema(Schema):
