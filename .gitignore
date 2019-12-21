@@ -5,3 +5,5 @@ env/
 db.sqlite3
 *.pyc
 blog_api/.coverage
+.coveralls.yml
+.pytest_cache
